@@ -18,7 +18,7 @@ const createChatLi = (message, className) => {
 }
 
 const generateResponse = (chatElement) => {
-    const API_URL = "https://dgov-7e66641fcc9a.herokuapp.com/api";
+    const API_URL = "https://votre-lien-api/api";
     const messageElement = chatElement.querySelector("p");
     const payload = {
         message: messageElement.textContent,
