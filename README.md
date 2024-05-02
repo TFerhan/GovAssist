@@ -117,7 +117,7 @@ Il est important de noter que ce projet nécessite davantage de tests avant le d
 
 
 
-Enfin, ce projet a été réalisé dans le cadre d'un stage émis par l'ADD ( Agence de développement du Digital). Si vous souhaitez en savoir plus sur mon parcours ou me contacter, vous pouvez consulter mon profil LinkedIn :
+Enfin, ce projet a été réalisé dans le cadre d'un stage émis par l'ADD ( Agence de Développement du Digital). Si vous souhaitez en savoir plus sur mon parcours ou me contacter, vous pouvez consulter mon profil LinkedIn :
 
 - **Ferhan Taha**
   - LinkedIn: [Ferhan Taha on LinkedIn](https://www.linkedin.com/in/tferhan/)
