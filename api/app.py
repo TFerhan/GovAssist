@@ -3,11 +3,13 @@ import threading, time
 from flask_cors import CORS, cross_origin
 from gradio_client import Client
 import os
-hf_token = os.environ.get('hf_token')
-client = Client("tferhan/data_gov_ma", hf_token=hf_token)
+#If you made the space private get the token
+#hf_token = os.environ.get('hf_token') 
+client = Client(
+    "tferhan/data_gov_ma",
+    #hf_token=hf_token
+               )
 
-#get hf token from env variables
-hf_token = os.environ.get('hf_token')
 app = Flask(__name__)
 
 CORS(app)
