@@ -11,7 +11,7 @@ Les fichiers dedans le dossier `chatbot` sont destinés à être hébergés sur 
 
 La solution préconisée consiste à héberger ces fichiers sur HuggingFace et à intégrer l'API fournie par `Gradio` sur votre serveur, puis dans le front-end pour les appels d'API.
 
-Le dossier `front-end` contient les fichiers `.css`, `.html` et `.js` responsables de l'interface utilisateur.
+Le dossier `front-end` contient les fichiers `.css`, `.html` et `.js` responsables de l'interface utilisateur. 
 
 Le dossier `api` contient le fichier `app.py` utilisé pour le déploiement de l'API Gradio. 
 
@@ -101,10 +101,12 @@ response = requests.post(url, json=data)
 print(response.text)
 ```
 
-
 L'API Flask a été déployée sur Heroku pour permettre des tests dans l'interface. Vous avez également la possibilité de la déployer sur votre propre serveur. Son poids est de 28 Mo. Sur Heroku, son coût peut atteindre un maximum de 7 $ par mois.
 
 Pour utiliser cette API, elle est appelée dans `front_end/script.js` à l'aide de la fonction fetch pour récupérer la réponse et rendre le chatbot dynamique.
+
+Finalement, le fichier index.html, ainsi que ses styles et son script.js, doivent être inclus dans le modèle de base du site pour être intégrés tout au long des pages disponibles sur le site.
+
 
 ## Notes
 L'utilisation des modèles de HuggingFace est gratuite et peut être utilisée pour des projets commerciaux, car la plupart des modèles sont sous licence Apache 2.0. En revanche, les API populaires comme OpenAI nécessitent l'utilisation de tokens, ce qui peut être coûteux. Ce chatbot, s'il est hébergé sur votre propre serveur, peut ne rien vous coûter car il utilise des technologies open source.
