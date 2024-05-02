@@ -20,10 +20,10 @@ from langchain import hub
 
 
 
-prompt = hub.pull("hwchase17/react")
+prompt = hub.pull("hwchase17/react") #A prompt to structure the message for the agent
 
-def faq(query: str) -> str:
-    reponse = conversation_chain.invoke({"question": query, "chat_history": []})
+def faq(query: str) -> str: #For Q&A from the document intents_v2
+    reponse = conversation_chain.invoke({"question": query, "chat_history": []}) #chain in qa_txt.py file
     return reponse['answer']
 
 qa_faq = StructuredTool.from_function(
@@ -39,12 +39,12 @@ qa_faq = StructuredTool.from_function(
     """
 )
 
-def request_data(query: str) -> str:
-    request = chain.invoke({"input": query})['text']
+def request_data(query: str) -> str: #For extracting data from the website 
+    request = chain.invoke({"input": query})['text'] #This chain extract the keyword based on the context
     mot_cle = nettoyer_string(request)
     mots = mot_cle.split()
     ui = mots[0]
-    rg = chercher_data(ui)
+    rg = chercher_data(ui) #This function scrap data based on the keyword extracted can be found in data_process.py
     if len(rg[0]):
       reponse_final = format_reponse(rg)
       return reponse_final
@@ -63,7 +63,7 @@ fetch_data = StructuredTool.from_function(
     """,
 )
 
-def translate(query: str) -> str:
+def translate(query: str) -> str: #For translation in french because the website operates in french language
     translated = trans.invoke({"input": query})['text']
     return translated
 
@@ -79,33 +79,33 @@ translate_text = StructuredTool.from_function(
     """,
 )
 
-tools_add = [
+tools_add = [ #List of tools above
     qa_faq,
     fetch_data,
     translate_text,
 ]
 
-agent = create_react_agent(llm=llm, tools=tools_add, prompt=prompt)
+agent = create_react_agent(llm=llm, tools=tools_add, prompt=prompt) #llm is imported from qa_txt.py
 
 agent_executor = AgentExecutor(
     agent=agent,
     tools=tools_add,
-    verbose=True,
-    max_iterations = 10,
-    #max_execution_time = 45, optionel mais useful dans le deployement
+    verbose=True, #To provide more words
+    max_iterations = 10, #To not lose the agent in a infinite loop if he doesn't understand the query
+    #max_execution_time = 45, optional but useful for timeout
     
 )
 
 def data_gov_ma(message, history):
   try:
-    response = agent_executor.invoke({"input": message})
+    response = agent_executor.invoke({"input": message}) #running the agent
     final_response = response['output']
-    timeout_iteration_error = 'Agent stopped due to iteration limit or time limit.'
+    timeout_iteration_error = 'Agent stopped due to iteration limit or time limit.' #Exception error due to max iterations or timeout
     if final_response == timeout_iteration_error:
         return "Je suis désolé, je n'ai pas compris votre question.Pourriez-vous la reformuler s'il vous plaît ?"
     else:
         return final_response
-  except ValueError as e:
+  except ValueError as e: #For any other Exception
     return "Je suis désolé, je n'ai pas compris votre question.Pourriez-vous la reformuler s'il vous plaît ?"
 
-gr.ChatInterface(data_gov_ma).launch()
+gr.ChatInterface(data_gov_ma).launch() #lunching gradio api
