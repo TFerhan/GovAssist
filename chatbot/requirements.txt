@@ -1,0 +1,11 @@
+transformers
+sentence-transformers
+langchain
+accelerate
+unidecode
+faiss-cpu
+requests
+bs4
+lxml
+langchainhub
+gradio
