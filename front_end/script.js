@@ -4,17 +4,16 @@ const chatbox = document.querySelector(".chatbox");
 const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
 
-let userMessage = null; // Variable to store user's message// Paste your API key here
+let userMessage = null; 
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
-    // Create a chat <li> element with passed message and className
     const chatLi = document.createElement("li");
     chatLi.classList.add("chat", `${className}`);
     let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlined"><img src="trbch.png"></span><p></p>`;
     chatLi.innerHTML = chatContent;
     chatLi.querySelector("p").innerHTML = message;
-    return chatLi; // return chat <li> element
+    return chatLi;
 }
 
 const generateResponse = (chatElement) => {
@@ -56,10 +55,8 @@ const generateResponse = (chatElement) => {
 }
 
 const handleChat = () => {
-    userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
+    userMessage = chatInput.value.trim();
     if(!userMessage) return;
-
-    // Clear the input textarea and set its height to default
     chatInput.value = "";
     chatInput.style.height = `${inputInitHeight}px`;
 
@@ -79,8 +76,6 @@ chatInput.addEventListener("input", () => {
 });
 
 chatInput.addEventListener("keydown", (e) => {
-    // If Enter key is pressed without Shift key and the window 
-    // width is greater than 800px, handle the chat
     if(e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
         e.preventDefault();
         handleChat();
@@ -92,7 +87,6 @@ const extractLinks = (text) => {
     return text.match(urlRegex);
 }
 
-// Function to format a message with clickable links
 const formatMessageWithLinks = (message, links) => {
     if (!links) {
         return message;
