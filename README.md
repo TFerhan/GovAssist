@@ -16,7 +16,7 @@ Le dossier `front-end` contient les fichiers `.css`, `.html` et `.js` responsabl
 Le dossier `api` contient le fichier `app.py` utilisé pour le déploiement de l'API Gradio. 
 
 ## Hiérarchie du Projet
--**chatbot**: Dossier contenant les fichiers nécessaire du model chatbot
+- **chatbot**: Dossier contenant les fichiers nécessaire du model chatbot
   - **app.py**: Initialisation et déploiement de l'Agent.
   - **data_process.py**: Outils d'extraction et de nettoyage de données.
   - **intents_v2.txt**: Document contenant la documentation du site.
@@ -31,7 +31,7 @@ Le dossier `api` contient le fichier `app.py` utilisé pour le déploiement de l
   - **index.html**: Interface HTML.
   - **script.js**: Fichier JavaScript.
   - **style.css**: Fichier CSS.
-  - **trbouch.png**: Image du chatbot.
+  - **trbch.png**: Image du chatbot.
 
 ## Fonctionnement
 
