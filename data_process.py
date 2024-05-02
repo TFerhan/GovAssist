@@ -11,7 +11,7 @@ def nettoyer_string(mot):
   return mot_final
 
 
-def chercher_data(mot,titles = [], links = [] ):
+def chercher_data(mot,titles = [], links = [] ): #Scraping data links from the website
     response = requests.get("https://data.gov.ma/data/fr/dataset",  params={'q': mot})
     if response.status_code != 200:
         return titles, links, response.url, 0
@@ -35,7 +35,7 @@ def chercher_data(mot,titles = [], links = [] ):
     return titles, links ,response.url, nombre_don[0]
 
 
-def format_reponse(data):
+def format_reponse(data): #structuring the scrapped data
     if len(data[0]) == 1:
           response = f"Ici le lien vers la donnée correspondant au mot recherché : {data[-2]}\n"
           response += f"Voici le seul résultat trouvé :\n"
