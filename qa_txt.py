@@ -14,7 +14,7 @@ c_splitter = CharacterTextSplitter(
     
     chunk_size = 350,
     chunk_overlap = 4,
-    separator = """,
+    separator = """, #Based on the intents_v2.txt document 
       ]""",
 
 )
@@ -29,7 +29,7 @@ def load_doc(file_path):
 
 
 llm = HuggingFaceEndpoint(
-            repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',
+            repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1', #Used as it can generate french and uploaded in inference
             temperature = 0.17,
             max_new_tokens = 512,
             top_k = 30,
@@ -59,7 +59,7 @@ Si tout va bien, allez-y.
         AI Assistant:
 """
 
-        # Set up a conversational chain to retrieve and generate responses.
+# Set up a conversational chain to retrieve and generate responses.
 conversation_chain = ConversationalRetrievalChain.from_llm(
             llm=llm,
             retriever=db.as_retriever(),
