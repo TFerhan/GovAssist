@@ -2,13 +2,6 @@ from langchain.prompts.prompt import PromptTemplate
 from langchain_community.llms import HuggingFaceEndpoint
 from langchain.chains import LLMChain
 from qa_txt import llm
-# llm = HuggingFaceEndpoint(
-#             repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',
-#             temperature = 0.2,
-#             max_new_tokens = 10,
-#             top_k = 30,
-#             load_in_8bit = True,
-#         )
 
 template = """
 
